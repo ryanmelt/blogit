@@ -46,7 +46,7 @@ module Blogit
       @post = Post.find(params[:id])
       @title = "#{@post.title} | COListings"
       @description = truncate(@post.body, length: 155, separator: "\n")
-      @canonical = @post.to_param
+      @canonical = "/" << @post.to_param
     end
 
     def tagged
