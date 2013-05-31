@@ -3,7 +3,8 @@ module Blogit
   # Using explicit ::Blogit::ApplicationController fixes NoMethodError 'blogit_authenticate' in
   # the main_app
   class PostsController < ::Blogit::ApplicationController
-    
+    include ActionView::Helpers::TextHelper    
+
     # If a layout is specified, use that. Otherwise, fall back to the default
     layout Blogit.configuration.layout if Blogit.configuration.layout
     
