@@ -59,7 +59,7 @@ module Blogit
     # ====================
 
     def to_param
-      "#{id}-#{title.parameterize}"
+      "#{id}/#{title.parameterize}"
     end
 
     # If there's a current blogger and the display name method is set, returns the blogger's display name
