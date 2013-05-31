@@ -36,14 +36,23 @@ module Blogit
           @posts = Post.order('created_at DESC')
         }
       end
+      @title = "Colorado Real Estate Blog | COListings"
+      @description = "A Colorado Real Estate Blog discussing topics relevant to home buyers, sellers, and realtors in the great state of Colorado."
+      @canonical = "/blog"
     end
 
     def show
       @post = Post.find(params[:id])
+      @title = "#{@post.title} | COListings"
+      @description = truncate(@post.body, length: 155, separator: "\n")
+      @canonical = @post.to_param
     end
 
     def tagged
       @posts = Post.for_index(params[Kaminari.config.param_name]).tagged_with(params[:tag])
+      @title = "Blog Posts Tagged #{params[:tag]} | COListings"
+      @description = "Colorado Real Estate blog posts related to #{params[:tag]}."
+      @canonical = "/posts/tagged/#{params[:tag]}"
       render :index
     end
 
