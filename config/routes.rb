@@ -3,7 +3,7 @@ Blogit::Engine.routes.draw do
   # Keep these above the posts resources block
   match "posts/page/:page" => "posts#index"
   match "posts/tagged/:tag" => 'posts#tagged', as: :tagged_blog_posts
-  match "posts/:id/*other" => 'posts#post'
+  match "posts/:id/*other" => 'posts#show'
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
