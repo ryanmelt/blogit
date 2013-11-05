@@ -10,5 +10,5 @@ Blogit::Engine.routes.draw do
 
   get "posts/:id/*other" => 'posts#show'
 
-  match "/" => "posts#index", as: :blog_root
+  match "/" => "posts#index", as: :blog_root, via: [:get, :post, :put]
 end
