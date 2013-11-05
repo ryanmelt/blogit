@@ -15,7 +15,7 @@ module Blogit
     # ==============
     # = Attributes =
     # ==============
-    attr_accessible :title, :body, :tag_list, :blogger_type, :blogger_id
+    #attr_accessible :title, :body, :tag_list, :blogger_type, :blogger_id
 
     def short_body
       truncate(body, length: 400, separator: "\n")

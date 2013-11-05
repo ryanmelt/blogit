@@ -58,7 +58,7 @@ module Blogit
     end
 
     def new
-      @post = current_blogger.blog_posts.new(params[:post])
+      @post = current_blogger.blog_posts.new(params[:post].permit(:title, :body, :tag_list, :blogger_type, :blogger_id))
     end
 
     def edit
@@ -66,7 +66,7 @@ module Blogit
     end
 
     def create
-      @post = current_blogger.blog_posts.new(params[:post])
+      @post = current_blogger.blog_posts.new(params[:post].permit(:title, :body, :tag_list, :blogger_type, :blogger_id))
       if @post.save
         redirect_to @post, notice: t(:blog_post_was_successfully_created, scope: 'blogit.posts')
       else
@@ -76,7 +76,7 @@ module Blogit
 
     def update
       @post = current_blogger.blog_posts.find(params[:id])
-      if @post.update_attributes(params[:post])
+      if @post.update_attributes(params[:post].permit(:title, :body, :tag_list, :blogger_type, :blogger_id))
         redirect_to @post, notice: t(:blog_post_was_successfully_updated, scope: 'blogit.posts')
       else
         render action: "edit"
